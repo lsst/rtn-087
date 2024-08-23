@@ -38,7 +38,7 @@ Introduction
 
 The purpose of this document is to capture details related to the function of the workflow in OpenMAINT and the API between OpenMAINT and Jira.
 
-.. todo::
+.. note::
    Need to determine correct location for workflow diagram and include link in this document for access.
    Need to know if MagicDraw will assign an ID number and be the offical repository, or if DocuShare will need to be the official repository.
    If MagicDraw is the repository, then a reference copy will be included in this document's repository.
