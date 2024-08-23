@@ -88,8 +88,8 @@ The Team should only be changeable by the Group Leader.
 
 If a maintenance activity gets rejected and closed, OpenMAINT reassigns the Jira ticket to the Group Leader and adds a comment saying, “the preventative maintenance activity was rejected by the assignee.”
 
-.. figure:: /_static/CMMS-reassigns-jira-ticket-with-comment.png
-    :name: CMMS-reassigns-jira-ticket-with-comment
+.. figure:: /_static/CMMS-reassigns-JIRA-ticket-with-comment.png
+    :name: CMMS-reassigns-JIRA-ticket-with-comment
 
 When the technician has finished updating the preventative maintenance activity and sends it for review, OpenMAINT will transition the Jira ticket from “IN PROGRESS” to “IN REVIEW”.
 It will also add the group leader as the reviewer.
