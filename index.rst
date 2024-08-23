@@ -71,14 +71,16 @@ The initial info transferred to the JIRA ticket should include:
 * Target execution date of the maintenance used as the Due Date in Jira.
 * Link to OpenMAINT maintenance activity.
 * Suggested text for body of the ticket:
-This is a maintenance activity from OpenMAINT.
-The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in JIRA, and get the activity in the work schedule.
-The technician/point-of-contact will START PROGRESS on the JIRA ticket, and then move to OpenMAINT to perform the work.
-Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
-They do not need to return to JIRA, all updates will be automatic.
-See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
-  * I recommend we generate a document or confluence page with a quick reference guide for what order to do things in when executing a preventive maintenance activity.
-We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
+  This is a maintenance activity from OpenMAINT.
+  The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in JIRA, and get the activity in the work schedule.
+  The technician/point-of-contact will START PROGRESS on the JIRA ticket, and then move to OpenMAINT to perform the work.
+  Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
+  They do not need to return to JIRA, all updates will be automatic.
+  See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
+
+..note::
+   I recommend we generate a document or confluence page with a quick reference guide for what order to do things in when executing a preventive maintenance activity.
+   We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
 
 Re-assigning the JIRA ticket if the Team is changed in OpenMAINT (ticket is assigned to the group lead or the default manager).
 The Team should only be changeable by the Group Leader.
@@ -197,13 +199,19 @@ The pop-up should include the date of the next scheduled maintenance, and the ty
 They should be allowed to choose one of the following options:
 
 * Maintain the current schedule
+
   * No due dates are adjusted with this option.
-If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
+  * If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
+
 * Skip the next maintenance activity and maintain the rest of the schedule
+
   * (NOTE: This will override any schedule changes in Jira)
   * The next maintenance activity is skipped, and the schedule for the remaining maintenance activities stays the same.
+
 * Maintain the activity frequency and adjust the schedule
+
   * Due dates for all future maintenance activities on the schedule are updated to maintain the normal cadence of the maintenance activity.
+
 If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
 
 .. figure:: /_static/CMMS-popup-window.png
