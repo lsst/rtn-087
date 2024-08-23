@@ -54,8 +54,8 @@ The screenshots within this docushare are for reference.
 Actions taken by OpenMAINT in JIRA
 ==================================
 
-This interaction is one-way only.
-OpenMAINT feeds info to JIRA, no info flows back.
+*This interaction is one-way only.
+OpenMAINT feeds info to JIRA, no info flows back.*
 
 .. figure:: /_static/open-jira-ticket.png
     :name: open-jira-ticket
@@ -80,16 +80,19 @@ The initial info transferred to the JIRA ticket should include:
    I recommend we generate a document or confluence page with a quick reference guide for what order to do things in when executing a preventive maintenance activity.
    We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
 
-Re-assigning the JIRA ticket if the Team is changed in OpenMAINT (ticket is assigned to the group lead or the default manager).
-The Team should only be changeable by the Group Leader.
-
 .. figure:: /_static/CMMS-reassigns-jira-ticket.png
     :name: CMMS-reassigns-jira-ticket
 
-If a maintenance activity gets rejected and closed, OpenMAINT reassigns the Jira ticket to the Group Leader and adds a comment saying, “the preventative maintenance activity was rejected by the assignee.”
+Re-assigning the JIRA ticket if the Team is changed in OpenMAINT (ticket is assigned to the group lead or the default manager).
+The Team should only be changeable by the Group Leader.
 
 .. figure:: /_static/CMMS-reassigns-JIRA-ticket-with-comment.png
     :name: CMMS-reassigns-JIRA-ticket-with-comment
+
+If a maintenance activity gets rejected and closed, OpenMAINT reassigns the Jira ticket to the Group Leader and adds a comment saying, “the preventative maintenance activity was rejected by the assignee.”
+
+.. figure:: /_static/CMMS-changes-Jira-status-review.png
+    :name: CMMS-changes-Jira-status-review
 
 When the technician has finished updating the preventative maintenance activity and sends it for review, OpenMAINT will transition the Jira ticket from “IN PROGRESS” to “IN REVIEW”.
 It will also add the group leader as the reviewer.
@@ -108,24 +111,24 @@ See OpenMAINT for additional details.”
    We could also consider having the Group Leader write up a little summary of how things went when they do closeout, instead of having the tech deal with that.
    This is for the purposes of management oversight so they don’t have to worry about access to OpenMAINT.
 
-.. figure:: /_static/CMMS-changes-Jira-status-review.png
-    :name: CMMS-changes-Jira-status-review
-
-If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., takes it out of review and sends it back to the technician for additional work), OpenMAINT will transition the Jira ticket from “IN REVIEW” to “IN PROGRESS”.
-
 .. figure:: /_static/CMMS-changes-Jira-status-progress.png
     :name: CMMS-changes-Jira-status-progress
 
-If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically change the status of the Jira ticket to “CLOSED”.
+If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., takes it out of review and sends it back to the technician for additional work), OpenMAINT will transition the Jira ticket from “IN REVIEW” to “IN PROGRESS”.
 
 .. figure:: /_static/CMMS-changes-Jira-status-closed.png
     :name: CMMS-changes-Jira-status-closed
 
-If the schedule of a maintenance activity is updated in OpenMAINT, the due date of the corresponding Jira ticket will be updated to match.
-A comment should be added that says “The due date was changed from [old due date] to [new due date].”
+If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically change the status of the Jira ticket to “CLOSED”.
 
 .. figure:: /_static/update-due-dates-in-JIRA.png
     :name: update-due-dates-in-JIRA
+
+If the schedule of a maintenance activity is updated in OpenMAINT, the due date of the corresponding Jira ticket will be updated to match.
+A comment should be added that says “The due date was changed from [old due date] to [new due date].”
+
+.. figure:: /_static/CMMS-posts-comment-in-JIRA.png
+    :name: CMMS-posts-comment-in-JIRA
 
 OpenMAINT will add comments to the Jira ticket throughout the workflow, when certain actions are taken within OpenMaint.
 In addition to the comments already mentioned that go along with specific actions taken by OpenMAINT, these include:
@@ -134,16 +137,13 @@ In addition to the comments already mentioned that go along with specific action
 * When the technician executes the maintenance activity, make a comment saying “The preventative maintenance activity has been executed.”
 * If the preventative maintenance activity is suspended, make a comment saying “The preventative maintenance activity has been paused.”
 
-.. figure:: /_static/CMMS-posts-comment-in-JIRA.png
-    :name: CMMS-posts-comment-in-JIRA
+.. figure:: /_static/skipped-comment.png
+    :name: skipped-comment
 
 If the Group Leader decides to skip the next scheduled maintenance activity, the corresponding Jira ticket should be canceled, with a comment added saying “This scheduled maintenance activity has been skipped.”
 
 .. note::
    We need to find out from TecnoTeca what their system does when you skip a preventative maintenance activity. Do they keep a record of it being skipped?
-
-.. figure:: /_static/skipped-comment.png
-    :name: skipped-comment
 
 
 .. _CMMS-JIRA-Workflow-API-Features:
@@ -151,10 +151,13 @@ If the Group Leader decides to skip the next scheduled maintenance activity, the
 Features within OpenMAINT
 =========================
 
-In the “Acceptance” stage of OpenMAINT, the technician either has the option to “Execute” the preventative maintenance activity, or “Reject and Return to Group Leader”.
-
 .. figure:: /_static/reject-or-execute.png
     :name: reject-or-execute
+
+In the “Acceptance” stage of OpenMAINT, the technician either has the option to “Execute” the preventative maintenance activity, or “Reject and Return to Group Leader”.
+
+.. figure:: /_static/CMMS-ticket-review.png
+    :name: CMMS-ticket-review
 
 When the technician sends the maintenance activity for review, they should be required to enter the completion date of the work.
 It should be clear that this is the date that physical work was completed, so they don’t update it if they have to go back and add paperwork.
@@ -162,13 +165,13 @@ It should be clear that this is the date that physical work was completed, so th
 .. note::
    I just realized that one thing missing from the workflow is some check for what date the work was completed. We could use the date that the workflow is sent to review, but that’s no longer correct if it gets sent back and only documentation needs to be added. But if we don’t require a date update, there’s always a change that the tech forgets to update it. Maybe when the group leader sends it back we actually have them specify within OpenMAINT whether it’s for documentation or for rework, and if it’s for rework they’re required to update the completion date, but they’re blocked from updating it if it’s for documentation?
 
-.. figure:: /_static/CMMS-ticket-review.png
-    :name: CMMS-ticket-review
+.. figure:: /_static/CMMS-ticket-review-for-closure.png
+    :name: CMMS-ticket-review-for-closure
 
 After the OpenMAINT maintenance activity ticket has been sent for review, only the Group Leader should have edit access.
 
-.. figure:: /_static/CMMS-ticket-review-for-closure.png
-    :name: CMMS-ticket-review-for-closure
+.. figure:: /_static/CMMS-popup-window.png
+    :name: CMMS-popup-window
 
 When the Group Leader closes the OpenMAINT ticket, a pop-up window should ask them how they want to adjust the schedule for the next maintenance activity.
 The pop-up should include the date of the next scheduled maintenance, and the typical maintenance period of this activity.
@@ -189,6 +192,3 @@ They should be allowed to choose one of the following options:
   * Due dates for all future maintenance activities on the schedule are updated to maintain the normal cadence of the maintenance activity.
 
 If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
-
-.. figure:: /_static/CMMS-popup-window.png
-    :name: CMMS-popup-window
