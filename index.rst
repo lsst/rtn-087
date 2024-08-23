@@ -23,6 +23,7 @@ CMMS-JIRA Workflow and API Details
 
    Describes process diagram for maintenance activity planning and execution to develop tooling for Rubin Observatory operations.
 
+
 .. _CMMS-JIRA-Workflow-API-Introduction:
 
 Introduction
@@ -37,12 +38,16 @@ Introduction
 
 The purpose of this document is to capture details related to the function of the workflow in OpenMAINT and the API between OpenMAINT and Jira.
 
-.. Link should be docushare if we are able to tell Magic Draw what ID to use when later getting the “official version”.
-If Magic Draw pulls its own doc number, stuck it in Git Hub for now.
+.. todo::
+   Need to determine correct location for workflow diagram and include link in this document for access.
+   Need to know if MagicDraw will assign an ID number and be the offical repository, or if DocuShare will need to be the official repository.
+   If MagicDraw is the repository, then a reference copy will be included in this document's repository.
 
-The screenshots within this docushare are for reference.
 The version of this document corresponds to Version 1 of the workflow diagram.
-See (link) for the workflow.
+The screenshots within this docushare are for reference.
+
+.. See (link) for the workflow.
+
 
 .. _CMMS-JIRA-Workflow-API-Actions:
 
@@ -66,14 +71,14 @@ The initial info transferred to the JIRA ticket should include:
 * Target execution date of the maintenance used as the Due Date in Jira.
 * Link to OpenMAINT maintenance activity.
 * Suggested text for body of the ticket:
-  This is a maintenance activity from OpenMAINT.
-  The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in JIRA, and get the activity in the work schedule.
-  The technician/point-of-contact will START PROGRESS on the JIRA ticket, and then move to OpenMAINT to perform the work.
-  Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
-  They do not need to return to JIRA, all updates will be automatic.
-  See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
+This is a maintenance activity from OpenMAINT.
+The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in JIRA, and get the activity in the work schedule.
+The technician/point-of-contact will START PROGRESS on the JIRA ticket, and then move to OpenMAINT to perform the work.
+Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
+They do not need to return to JIRA, all updates will be automatic.
+See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
   * I recommend we generate a document or confluence page with a quick reference guide for what order to do things in when executing a preventive maintenance activity.
-    We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
+We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
 
 Re-assigning the JIRA ticket if the Team is changed in OpenMAINT (ticket is assigned to the group lead or the default manager).
 The Team should only be changeable by the Group Leader.
@@ -98,7 +103,8 @@ The outcome was [Outcome].
 See OpenMAINT for additional details.”
 
 .. note::
-   Rubin Team: We need to look at whatever other fields are required in JIRA to transition maintenance tickets in Jira from In Progress to In Review and make sure those details are filled by OpenMAINT so that the transition doesn’t fail.
+   Rubin Team: We need to look at whatever other fields are required in JIRA to transition maintenance tickets in Jira from In Progress to In Review.
+   Then make sure those details are filled by OpenMAINT so that the transition doesn’t fail.
 
 .. note::
    There’s the option to add comments to the outcome.
@@ -150,8 +156,8 @@ If the Group Leader decides to skip the next scheduled maintenance activity, the
 .. note::
    We need to find out from TecnoTeca what their system does when you skip a preventative maintenance activity. Do they keep a record of it being skipped?
 
-.. figure:: /_static/CMMS-posts-comment-in-JIRA.png
-    :name: CMMS-posts-comment-in-JIRA
+.. figure:: /_static/skipped-comment.png
+    :name: skipped-comment
 
     Caption.
 
@@ -192,13 +198,13 @@ They should be allowed to choose one of the following options:
 
 * Maintain the current schedule
   * No due dates are adjusted with this option.
-    If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
+If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
 * Skip the next maintenance activity and maintain the rest of the schedule
   * (NOTE: This will override any schedule changes in Jira)
   * The next maintenance activity is skipped, and the schedule for the remaining maintenance activities stays the same.
 * Maintain the activity frequency and adjust the schedule
   * Due dates for all future maintenance activities on the schedule are updated to maintain the normal cadence of the maintenance activity.
-    If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
+If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
 
 .. figure:: /_static/CMMS-popup-window.png
     :name: CMMS-popup-window
