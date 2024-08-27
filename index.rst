@@ -78,7 +78,7 @@ The initial info transferred to the JIRA ticket should include:
   They do not need to return to JIRA, all updates will be automatic.
   See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
 
-..note::
+.. note::
    I recommend we generate a document or confluence page with a quick reference guide for what order to do things in when executing a preventive maintenance activity.
    We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
 
