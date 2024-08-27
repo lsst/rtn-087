@@ -59,10 +59,10 @@ OpenMAINT feeds info to JIRA, no info flows back.*
 
 |
 
-.. |image1| image:: /_static/open-jira-ticket.png
+.. figure:: /_static/open-jira-ticket.png
     :name: open-jira-ticket
 
-|image1| Initial opening of the JIRA ticket.
+Initial opening of the JIRA ticket.
 This occurs one month before the schedule maintenance time in OpenMAINT to allow for resource scheduling and activity coordination in Jira.
 The initial info transferred to the JIRA ticket should include:
 
