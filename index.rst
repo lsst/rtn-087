@@ -67,6 +67,7 @@ This occurs one month before the schedule maintenance time in OpenMAINT to allow
 The initial info transferred to the JIRA ticket should include:
 
 * Assignee (this is the group lead for the assigned group, or the default manager (Eduardo) if that person doesn’t exist in JIRA).
+* Add Manager (Eduardo) as a watcher
 * Priority (still need to match these with JIRA values?).
 * Target execution date of the maintenance used as the Due Date in Jira.
 * Link to OpenMAINT maintenance activity.
@@ -84,18 +85,19 @@ The initial info transferred to the JIRA ticket should include:
 
 |
 
+.. figure:: /_static/CMMS-cancel-and-comment-Jira.png
+    :name: CMMS-cancel-and-comment-Jira
+
+If a maintenance activity is rejected and closed by the Group Leader, the Jira ticket is cancelled. 
+OpenMAINT will also add a comment that says “This maintenance activity has been rejected by the Group Leader and will be skipped.”
+
+|
+
 .. figure:: /_static/CMMS-reassigns-jira-ticket.png
     :name: CMMS-reassigns-jira-ticket
 
 Re-assigning the JIRA ticket if the Team is changed in OpenMAINT (ticket is assigned to the group lead or the default manager).
 The Team should only be changeable by the Group Leader.
-
-|
-
-.. figure:: /_static/CMMS-reassigns-JIRA-ticket-with-comment.png
-    :name: CMMS-reassigns-JIRA-ticket-with-comment
-
-If a maintenance activity gets rejected and closed, OpenMAINT reassigns the Jira ticket to the Group Leader and adds a comment saying, “the preventative maintenance activity was rejected by the assignee.”
 
 |
 
@@ -132,6 +134,21 @@ If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., take
     :name: CMMS-changes-Jira-status-closed
 
 If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically change the status of the Jira ticket to “CLOSED”.
+It will also add a comment depending on the final status of the maintenance activity:
+
+* If the final status is “Positive”, the comment will say “This maintenance activity has been closed.
+  All tasks were completed successfully. See OpenMAINT for additional details.”
+* If the final status is “Negative”, the comment will say “This maintenance activity has been closed. 
+  There were problems, and all tasks were NOT completed successfully. See OpenMAINT for additional details.”
+* If the final status is “Maintenance Not Required”, the comment will say “This maintenance activity has been closed. 
+  While the work was being done, it was determined this maintenance was not required. See OpenMAINT for additional details.”
+
+|
+
+.. figure:: /_static/skipped-comment.png
+    :name: skipped-comment
+
+If the Group Leader decides to skip the next scheduled maintenance activity, the corresponding Jira ticket should be canceled, with a comment added saying “This scheduled maintenance activity has been skipped.”
 
 |
 
@@ -139,7 +156,11 @@ If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically ch
     :name: update-due-dates-in-JIRA
 
 If the schedule of a maintenance activity is updated in OpenMAINT, the due date of the corresponding Jira ticket will be updated to match.
-A comment should be added that says “The due date was changed from [old due date] to [new due date].”
+The comment added to the Jira ticket will depend on what changes were made to the schedule:
+
+* If the cadence was maintained, a comment should be added that says “The due date was changed from [old due date] to [new due date].”
+* If the maintenance activity schedule was paused, a  comment should be added that says “This activity has been paused until [restart date]. 
+  It has been paused for this reason: [insert reason provided by Group Leader within OpenMAINT]”
 
 |
 
@@ -155,33 +176,30 @@ In addition to the comments already mentioned that go along with specific action
 
 |
 
-.. figure:: /_static/skipped-comment.png
-    :name: skipped-comment
-
-If the Group Leader decides to skip the next scheduled maintenance activity, the corresponding Jira ticket should be canceled, with a comment added saying “This scheduled maintenance activity has been skipped.”
-
-.. note::
-   We need to find out from TecnoTeca what their system does when you skip a preventative maintenance activity. Do they keep a record of it being skipped?
-
-|
-
 .. _CMMS-JIRA-Workflow-API-Features:
 
 Features within OpenMAINT
 =========================
 
-.. figure:: /_static/reject-or-execute.png
-    :name: reject-or-execute
+.. figure:: /_static/execute.png
+    :name: execute
 
-In the “Acceptance” stage of OpenMAINT, the technician either has the option to “Execute” the preventative maintenance activity, or “Reject and Return to Group Leader”.
+In the “Acceptance” stage of OpenMAINT, the technician ONLY has the option to “Execute” the preventative maintenance activity. 
+The Group Leader is the only one with the power to reject and close. 
+If the technician is busy or thinks they’re not the right person for the job, they work with the Group Leader to reschedule and/or choose a new assignee in Jira.
 
 |
 
 .. figure:: /_static/CMMS-ticket-review.png
     :name: CMMS-ticket-review
 
-When the technician sends the maintenance activity for review, they should be required to enter the completion date of the work.
+The technician doesn’t have the option to conclude the activity, instead they have the option to Send for Review. 
+When the technician sends the maintenance activity for review, they should be required to enter the outcome, and the completion date of the work.
 It should be clear that this is the date that physical work was completed, so they don’t update it if they have to go back and add paperwork.
+The technician has 3 options when selecting the Outcome: Positive, Negative, and Maintenance Not Required.
+
+.. note::
+   “Positive” and “Negative” are defaults within OpenMAINT. Do we want to consider something like “Maintenance successful” and “Maintenance not completed” instead? (e.g. we don’t want someone to put “negative” if the maintenance is completed successfully but they find out something else is broken in the process)
 
 .. note::
    I just realized that one thing missing from the workflow is some check for what date the work was completed. We could use the date that the workflow is sent to review, but that’s no longer correct if it gets sent back and only documentation needs to be added. But if we don’t require a date update, there’s always a change that the tech forgets to update it. Maybe when the group leader sends it back we actually have them specify within OpenMAINT whether it’s for documentation or for rework, and if it’s for rework they’re required to update the completion date, but they’re blocked from updating it if it’s for documentation?
@@ -193,6 +211,18 @@ It should be clear that this is the date that physical work was completed, so th
 
 After the OpenMAINT maintenance activity ticket has been sent for review, only the Group Leader should have edit access.
 
+
+|
+
+.. figure:: /_static/Group-Leader-approval-choice.png
+    :name: Group-Leader-approval-choice
+
+(Note that the wording in this screenshot needs to be updated to better reflect the language that's in OpenMAINT) 
+After reviewing the completed maintenance activity, the Group Leader has the action options to Conclude Activity or Send for Rework. 
+Send for Rework opens up edit access to the Technician again. 
+Ideally the original Outcome and completion date will be preserved, and can be updated if necessary when the Technician sends for review again.
+
+
 |
 
 .. figure:: /_static/CMMS-popup-window.png
@@ -202,18 +232,55 @@ When the Group Leader closes the OpenMAINT ticket, a pop-up window should ask th
 The pop-up should include the date of the next scheduled maintenance, and the typical maintenance period of this activity.
 They should be allowed to choose one of the following options:
 
-* Maintain the current schedule
+* **Maintain Date** maintains the current schedule
 
   * No due dates are adjusted with this option.
   * If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
 
-* Skip the next maintenance activity and maintain the rest of the schedule
+* **Maintain Cadence** maintains the activity frequency and adjust the schedule
+
+  * Due dates for all future maintenance activities on the schedule are updated to maintain the normal cadence of the maintenance activity.
+  * If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
+
+* **Skip Next** cancels the next maintenance activity and maintains the rest of the schedule
 
   * (NOTE: This will override any schedule changes in Jira)
   * The next maintenance activity is skipped, and the schedule for the remaining maintenance activities stays the same.
 
-* Maintain the activity frequency and adjust the schedule
+* **Pause** is selected if this activity won't be done for a while. This option reschedules the next maintenance activity based on the selected date.
 
-  * Due dates for all future maintenance activities on the schedule are updated to maintain the normal cadence of the maintenance activity.
+  * The Group Leader will be prompted to select or enter a date when the maintenance activity will resume.
+  * The Group Leader will be required to write a comment saying why the maintenance activity is being paused.
 
-If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
+For Reference: User Intractions
+===============================
+*While the information in this section does not directly impact the API or functionality within OpenMAINT, we feel it is helpful to provide some context with how we intend users to interact with these program features.*
+
+|
+
+.. figure:: /_static/tech-tasks.png
+    :name: tech-tasks
+
+The technician will perform the maintenance activity and update the OpenMAINT ticket regardless of how the maintenance activity goes. 
+This includes whether everything went perfectly, something broke, the maintenance wasn’t required, etc. 
+The intention is to use the maintenance activity to record what happened, so the Group Leader can review everything in one place and decide what to do next. 
+We need to make sure options for entering data, comments, and outcomes are flexible enough to handle many different scenarios.
+
+|
+
+.. figure:: /_static/Group-Leader-approval-tasks.png
+    :name: Group-Leader-approval-tasks
+
+The Group Leader’s role in reviewing and closing out completed maintenance activities is very important. When reviewing the ticket, they must:
+
+* Review the Outcome, make sure they agree with it
+* Make sure any necessary attachments are included
+* Review any notes from during the activity
+
+  * Did something go wrong? Did something break? Do we need to generate a FRACAS ticket and/or corrective action?
+  * Were redlines made to the procedure? Do we need to make an action item to finalize those updates?
+
+* Is the maintenance activity completely filled out, is something missing? Was something not done correctly? Does this need to be sent back to the technician for additional work?
+
+When closing the maintenance activity once everything looks good, the Group Leader must then make decisions about scheduling the next maintenance activity.
+
