@@ -39,15 +39,17 @@ Introduction
 The purpose of this document is to capture details related to the function of the workflow in OpenMAINT and the API between OpenMAINT and Jira.
 
 .. note::
-   Need to determine correct location for workflow diagram and include link in this document for access.
-   Need to know if MagicDraw will assign an ID number and be the offical repository, or if DocuShare will need to be the official repository.
-   If MagicDraw is the repository, then a reference copy will be included in this document's repository.
+   Final workflow diagram will be uploaded as a PDF to docushare, and a link needs to be included in this document for access.
+   We can make this a "document" just to allow an easy place to reference, or release as an RTD if we want more stringent version control.
 
 The version of this document corresponds to Version 1 of the workflow diagram.
 The screenshots within this docushare are for reference.
 
 .. See (link) for the workflow.
 
+.. note::
+   This document primarily described functions within OpenMAINT and how it interacts with Jira.
+   We will generate a separate document with a quick reference guide for users, which will cover how personnel interact with the systems to execute preventive maintenance activities.
 
 .. _CMMS-JIRA-Workflow-API-Actions:
 
@@ -78,10 +80,6 @@ The initial info transferred to the JIRA ticket should include:
   Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
   They do not need to return to JIRA, all updates will be automatic.
   See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
-
-.. note::
-   I recommend we generate a document or confluence page with a quick reference guide for what order to do things in when executing a preventive maintenance activity.
-   We want people trained before they really start using it, but guides are super useful when first using a new system/workflow and can be a huge quality of life improvement.
 
 |
 
@@ -115,12 +113,6 @@ See OpenMAINT for additional details.”
    Rubin Team: We need to look at whatever other fields are required in JIRA to transition maintenance tickets in Jira from In Progress to In Review.
    Then make sure those details are filled by OpenMAINT so that the transition doesn’t fail.
 
-.. note::
-   There’s the option to add comments to the outcome.
-   We can either have them repeated here or make anyone who wants those details go to OpenMAINT.
-   We could also consider having the Group Leader write up a little summary of how things went when they do closeout, instead of having the tech deal with that.
-   This is for the purposes of management oversight so they don’t have to worry about access to OpenMAINT.
-
 |
 
 .. figure:: /_static/CMMS-changes-Jira-status-progress.png
@@ -136,12 +128,12 @@ If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., take
 If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically change the status of the Jira ticket to “CLOSED”.
 It will also add a comment depending on the final status of the maintenance activity:
 
-* If the final status is “Positive”, the comment will say “This maintenance activity has been closed.
+* If the OUtcome is “Maintenance Successful”, the comment will say “This maintenance activity has been closed.
   All tasks were completed successfully. See OpenMAINT for additional details.”
-* If the final status is “Negative”, the comment will say “This maintenance activity has been closed. 
+* If the Outcome is “Maintenance Not Completed”, the comment will say “This maintenance activity has been closed. 
   There were problems, and all tasks were NOT completed successfully. See OpenMAINT for additional details.”
-* If the final status is “Maintenance Not Required”, the comment will say “This maintenance activity has been closed. 
-  While the work was being done, it was determined this maintenance was not required. See OpenMAINT for additional details.”
+* If the Outcome is “Maintenance Not Required”, the comment will say “This maintenance activity has been closed. 
+  It was determined this maintenance is not required. See OpenMAINT for additional details.”
 
 |
 
@@ -196,13 +188,7 @@ If the technician is busy or thinks they’re not the right person for the job, 
 The technician doesn’t have the option to conclude the activity, instead they have the option to Send for Review. 
 When the technician sends the maintenance activity for review, they should be required to enter the outcome, and the completion date of the work.
 It should be clear that this is the date that physical work was completed, so they don’t update it if they have to go back and add paperwork.
-The technician has 3 options when selecting the Outcome: Positive, Negative, and Maintenance Not Required.
-
-.. note::
-   “Positive” and “Negative” are defaults within OpenMAINT. Do we want to consider something like “Maintenance successful” and “Maintenance not completed” instead? (e.g. we don’t want someone to put “negative” if the maintenance is completed successfully but they find out something else is broken in the process)
-
-.. note::
-   I just realized that one thing missing from the workflow is some check for what date the work was completed. We could use the date that the workflow is sent to review, but that’s no longer correct if it gets sent back and only documentation needs to be added. But if we don’t require a date update, there’s always a change that the tech forgets to update it. Maybe when the group leader sends it back we actually have them specify within OpenMAINT whether it’s for documentation or for rework, and if it’s for rework they’re required to update the completion date, but they’re blocked from updating it if it’s for documentation?
+The technician has 3 options when selecting the Outcome: Maintenance Successful, Maintenance Not Completed, and Maintenance Not Required.
 
 |
 
@@ -210,7 +196,6 @@ The technician has 3 options when selecting the Outcome: Positive, Negative, and
     :name: CMMS-ticket-review-for-closure
 
 After the OpenMAINT maintenance activity ticket has been sent for review, only the Group Leader should have edit access.
-
 
 |
 
