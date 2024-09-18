@@ -48,7 +48,7 @@ The screenshots within this docushare are for reference.
 .. See (link) for the workflow.
 
 .. note::
-   This document primarily described functions within OpenMAINT and how it interacts with Jira.
+   This document primarily describes functions within OpenMAINT and how it interacts with Jira.
    We will generate a separate document with a quick reference guide for users, which will cover how personnel interact with the systems to execute preventive maintenance activities.
 
 .. _CMMS-JIRA-Workflow-API-Actions:
