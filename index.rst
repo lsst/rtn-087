@@ -175,6 +175,7 @@ Features within OpenMAINT
 
 .. figure:: /_static/execute.png
     :name: execute
+    :scale: 50 %
 
 In the “Acceptance” stage of OpenMAINT, the technician ONLY has the option to “Execute” the preventative maintenance activity. 
 The Group Leader is the only one with the power to reject and close. 
