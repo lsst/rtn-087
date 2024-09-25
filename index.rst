@@ -175,7 +175,7 @@ Features within OpenMAINT
 
 .. figure:: /_static/execute.png
     :name: execute
-    :scale: 50 %
+    :scale: 25 %
 
 In the “Acceptance” stage of OpenMAINT, the technician ONLY has the option to “Execute” the preventative maintenance activity. 
 The Group Leader is the only one with the power to reject and close. 
@@ -185,6 +185,7 @@ If the technician is busy or thinks they’re not the right person for the job, 
 
 .. figure:: /_static/CMMS-ticket-review.png
     :name: CMMS-ticket-review
+    :width: 280 px
 
 The technician doesn’t have the option to conclude the activity, instead they have the option to Send for Review. 
 When the technician sends the maintenance activity for review, they should be required to enter the outcome, and the completion date of the work.
