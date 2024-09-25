@@ -63,6 +63,7 @@ OpenMAINT feeds info to JIRA, no info flows back.*
 
 .. figure:: /_static/open-jira-ticket.png
     :name: open-jira-ticket
+    :width: 380 px
 
 Initial opening of the JIRA ticket.
 This occurs one month before the schedule maintenance time in OpenMAINT to allow for resource scheduling and activity coordination in Jira.
@@ -85,6 +86,7 @@ The initial info transferred to the JIRA ticket should include:
 
 .. figure:: /_static/CMMS-cancel-and-comment-Jira.png
     :name: CMMS-cancel-and-comment-Jira
+    :width: 550 px
 
 If a maintenance activity is rejected and closed by the Group Leader, the Jira ticket is cancelled. 
 OpenMAINT will also add a comment that says “This maintenance activity has been rejected by the Group Leader and will be skipped.”
@@ -93,6 +95,7 @@ OpenMAINT will also add a comment that says “This maintenance activity has bee
 
 .. figure:: /_static/CMMS-reassigns-jira-ticket.png
     :name: CMMS-reassigns-jira-ticket
+    :width: 550 px
 
 Re-assigning the JIRA ticket if the Team is changed in OpenMAINT (ticket is assigned to the group lead or the default manager).
 The Team should only be changeable by the Group Leader.
@@ -101,6 +104,7 @@ The Team should only be changeable by the Group Leader.
 
 .. figure:: /_static/CMMS-changes-Jira-status-review.png
     :name: CMMS-changes-Jira-status-review
+    :width: 530 px
 
 When the technician has finished updating the preventative maintenance activity and sends it for review, OpenMAINT will transition the Jira ticket from “IN PROGRESS” to “IN REVIEW”.
 It will also add the group leader as the reviewer.
@@ -117,6 +121,7 @@ See OpenMAINT for additional details.”
 
 .. figure:: /_static/CMMS-changes-Jira-status-progress.png
     :name: CMMS-changes-Jira-status-progress
+    :width: 530 px
 
 If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., takes it out of review and sends it back to the technician for additional work), OpenMAINT will transition the Jira ticket from “IN REVIEW” to “IN PROGRESS”.
 
@@ -124,6 +129,7 @@ If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., take
 
 .. figure:: /_static/CMMS-changes-Jira-status-closed.png
     :name: CMMS-changes-Jira-status-closed
+    :width: 550 px
 
 If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically change the status of the Jira ticket to “CLOSED”.
 It will also add a comment depending on the final status of the maintenance activity:
@@ -139,6 +145,7 @@ It will also add a comment depending on the final status of the maintenance acti
 
 .. figure:: /_static/skipped-comment.png
     :name: skipped-comment
+    :width: 520 px
 
 If the Group Leader decides to skip the next scheduled maintenance activity, the corresponding Jira ticket should be canceled, with a comment added saying “This scheduled maintenance activity has been skipped.”
 
@@ -146,6 +153,7 @@ If the Group Leader decides to skip the next scheduled maintenance activity, the
 
 .. figure:: /_static/update-due-dates-in-JIRA.png
     :name: update-due-dates-in-JIRA
+    :width: 520 px
 
 If the schedule of a maintenance activity is updated in OpenMAINT, the due date of the corresponding Jira ticket will be updated to match.
 The comment added to the Jira ticket will depend on what changes were made to the schedule:
@@ -158,6 +166,7 @@ The comment added to the Jira ticket will depend on what changes were made to th
 
 .. figure:: /_static/CMMS-posts-comment-in-JIRA.png
     :name: CMMS-posts-comment-in-JIRA
+    :width: 550 px
 
 OpenMAINT will add comments to the Jira ticket throughout the workflow, when certain actions are taken within OpenMaint.
 In addition to the comments already mentioned that go along with specific actions taken by OpenMAINT, these include:
@@ -175,7 +184,7 @@ Features within OpenMAINT
 
 .. figure:: /_static/execute.png
     :name: execute
-    :scale: 25 %
+    :width: 280 px
 
 In the “Acceptance” stage of OpenMAINT, the technician ONLY has the option to “Execute” the preventative maintenance activity. 
 The Group Leader is the only one with the power to reject and close. 
@@ -196,6 +205,7 @@ The technician has 3 options when selecting the Outcome: Maintenance Successful,
 
 .. figure:: /_static/CMMS-ticket-review-for-closure.png
     :name: CMMS-ticket-review-for-closure
+    :width: 475 px
 
 After the OpenMAINT maintenance activity ticket has been sent for review, only the Group Leader should have edit access.
 
@@ -203,6 +213,7 @@ After the OpenMAINT maintenance activity ticket has been sent for review, only t
 
 .. figure:: /_static/Group-Leader-approval-choice.png
     :name: Group-Leader-approval-choice
+    :width: 475 px
 
 (Note that the wording in this screenshot needs to be updated to better reflect the language that's in OpenMAINT) 
 After reviewing the completed maintenance activity, the Group Leader has the action options to Conclude Activity or Send for Rework. 
@@ -214,6 +225,7 @@ Ideally the original Outcome and completion date will be preserved, and can be u
 
 .. figure:: /_static/CMMS-popup-window.png
     :name: CMMS-popup-window
+    :width: 550 px
 
 When the Group Leader closes the OpenMAINT ticket, a pop-up window should ask them how they want to adjust the schedule for the next maintenance activity.
 The pop-up should include the date of the next scheduled maintenance, and the typical maintenance period of this activity.
