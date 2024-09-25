@@ -174,7 +174,7 @@ Features within OpenMAINT
 =========================
 
 .. figure:: /_static/execute.png
-    :scale: 50%
+    :width: 280 px
     :name: execute
 
 In the “Acceptance” stage of OpenMAINT, the technician ONLY has the option to “Execute” the preventative maintenance activity. 
