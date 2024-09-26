@@ -115,8 +115,8 @@ The outcome was [Outcome].
 See OpenMAINT for additional details.”
 
 .. note::
-   Rubin Team: We need to look at whatever other fields are required in JIRA to transition maintenance tickets in Jira from In Progress to In Review.
-   Then make sure those details are filled by OpenMAINT so that the transition doesn’t fail.
+   There is currently no reviewer field on MAINT Jira tickets.
+   We will work on adding this, so it should be planned for in the API even if it can't be implemented immediately.
 
 |
 
@@ -124,12 +124,18 @@ See OpenMAINT for additional details.”
     :name: CMMS-changes-Jira-status-progress
     :width: 530 px
 
-If the Group Leader sends the OpenMAINT ticket back (i.e., takes it out of review and sends it back to the technician for additional work), OpenMAINT will transition the Jira ticket from “UNDER REVIEW” to "REJECTED", and then to “IN PROGRESS”. It will also leave a comment based on the action the Group Leader selected.
-If the Group Leader selected Send Back (Add report), the comment should be: This maintenance activity has been sent back. Additional paperwork is required. Discuss with the Group Leader for details.
-If the Group Leader selected Send Back (Rework), the comment should be: This maintenance activity has been send back. Rework is required. Discuss with the Group Leader for details.
+If the Group Leader sends the OpenMAINT ticket back (i.e., takes it out of review and sends it back to the technician for additional work), 
+OpenMAINT will transition the Jira ticket from “UNDER REVIEW” to "REJECTED", and then to “IN PROGRESS”. 
+It will also leave a comment based on the action the Group Leader selected:
+
+*If the Group Leader selected Send Back (Add report), the comment will say "This maintenance activity has been sent back. 
+ Additional paperwork is required. See OpenMAINT for details."
+*If the Group Leader selected Send Back (Rework), the comment will say "This maintenance activity has been sent back. 
+ Rework is required. See OpenMAINT for details."
 
 ..note::
-Alternatively, we could have the Group Leader leave a comment when making this selection, which could show up both in the OpenMAINT ticket, and in a Jira comment.
+   Need to find out how the comments left in OpenMAINT are stored/if you can see a history.
+   If you can't see a history, we will want the comment repeated in Jira.
 
 |
 
@@ -222,6 +228,7 @@ After the OpenMAINT maintenance activity ticket has been sent for review, only t
     :width: 475 px
 
 After reviewing the completed maintenance activity, the Group Leader has the action options to Conclude Activity, Send Back (Add report), or Send Back (Rework). 
+When sending a maintenance activity back, the Group Leader will be required to write a comment about what needs to be done. 
 Both Send Back options open up edit access to the Technician again. 
 The Send Back (Rework) option will delete the completion date and the original Outcome, but will preserve the completed checklist (in case only some steps need to be reworked).
 
