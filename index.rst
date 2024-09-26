@@ -72,15 +72,16 @@ The initial info transferred to the JIRA ticket should include:
 * Assignee (this is the group lead for the assigned group, or the default manager (Eduardo) if that person doesn’t exist in JIRA).
 * Add Manager (Eduardo) as a watcher
 * Priority (still need to match these with JIRA values?).
+* Components: Planned Maintenance
 * Target execution date of the maintenance used as the Due Date in Jira.
 * Link to OpenMAINT maintenance activity.
-* Suggested text for body of the ticket:
-  This is a maintenance activity from OpenMAINT.
+* Suggested text for description of the ticket:
+  This is a maintenance activity from OpenMAINT: (name of maintenance activity)
   The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in JIRA, and get the activity in the work schedule.
   The technician/point-of-contact will START PROGRESS on the JIRA ticket, and then move to OpenMAINT to perform the work.
   Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
   They do not need to return to JIRA, all updates will be automatic.
-  See (link to document or confluence page) for reminders on how to execute the workflow in OpenMAINT.
+  See (link to document or confluence page, to be provided) for reminders on how to execute the workflow in OpenMAINT.
 
 |
 
@@ -106,7 +107,7 @@ The Team should only be changeable by the Group Leader.
     :name: CMMS-changes-Jira-status-review
     :width: 530 px
 
-When the technician has finished updating the preventative maintenance activity and sends it for review, OpenMAINT will transition the Jira ticket from “IN PROGRESS” to “IN REVIEW”.
+When the technician has finished updating the preventative maintenance activity and sends it for review, OpenMAINT will transition the Jira ticket from “IN PROGRESS” to “UNDER REVIEW”.
 It will also add the group leader as the reviewer.
 It will also make a comment saying,
 “The maintenance activity has been completed.
@@ -123,7 +124,12 @@ See OpenMAINT for additional details.”
     :name: CMMS-changes-Jira-status-progress
     :width: 530 px
 
-If the Group Leader changes the OpenMAINT ticket back to in progress (i.e., takes it out of review and sends it back to the technician for additional work), OpenMAINT will transition the Jira ticket from “IN REVIEW” to “IN PROGRESS”.
+If the Group Leader sends the OpenMAINT ticket back (i.e., takes it out of review and sends it back to the technician for additional work), OpenMAINT will transition the Jira ticket from “UNDER REVIEW” to "REJECTED", and then to “IN PROGRESS”. It will also leave a comment based on the action the Group Leader selected.
+If the Group Leader selected Send Back (Add report), the comment should be: This maintenance activity has been sent back. Additional paperwork is required. Discuss with the Group Leader for details.
+If the Group Leader selected Send Back (Rework), the comment should be: This maintenance activity has been send back. Rework is required. Discuss with the Group Leader for details.
+
+..note::
+Alternatively, we could have the Group Leader leave a comment when making this selection, which could show up both in the OpenMAINT ticket, and in a Jira comment.
 
 |
 
@@ -215,10 +221,9 @@ After the OpenMAINT maintenance activity ticket has been sent for review, only t
     :name: Group-Leader-approval-choice
     :width: 475 px
 
-(Note that the wording in this screenshot needs to be updated to better reflect the language that's in OpenMAINT) 
-After reviewing the completed maintenance activity, the Group Leader has the action options to Conclude Activity or Send for Rework. 
-Send for Rework opens up edit access to the Technician again. 
-Ideally the original Outcome and completion date will be preserved, and can be updated if necessary when the Technician sends for review again.
+After reviewing the completed maintenance activity, the Group Leader has the action options to Conclude Activity, Send Back (Add report), or Send Back (Rework). 
+Both Send Back options open up edit access to the Technician again. 
+The Send Back (Rework) option will delete the completion date and the original Outcome, but will preserve the completed checklist (in case only some steps need to be reworked).
 
 
 |
