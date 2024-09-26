@@ -71,7 +71,7 @@ The initial info transferred to the JIRA ticket should include:
 
 * Assignee (this is the group lead for the assigned group, or the default manager (Eduardo) if that person doesn’t exist in JIRA).
 * Add Manager (Eduardo) as a watcher
-* Priority (still need to match these with JIRA values?).
+* Priority (still need to match these with JIRA values).
 * Components: Planned Maintenance
 * Target execution date of the maintenance used as the Due Date in Jira.
 * Link to OpenMAINT maintenance activity.
@@ -82,6 +82,9 @@ The initial info transferred to the JIRA ticket should include:
   Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
   They do not need to return to JIRA, all updates will be automatic.
   See (link to document or confluence page, to be provided) for reminders on how to execute the workflow in OpenMAINT.
+
+.. note::
+   We need to choose what priorities to use in Jira, and how to assign them in OpenMAINT.
 
 |
 
@@ -133,7 +136,7 @@ It will also leave a comment based on the action the Group Leader selected:
 *If the Group Leader selected Send Back (Rework), the comment will say "This maintenance activity has been sent back. 
  Rework is required. See OpenMAINT for details."
 
-..note::
+.. note::
    Need to find out how the comments left in OpenMAINT are stored/if you can see a history.
    If you can't see a history, we will want the comment repeated in Jira.
 
