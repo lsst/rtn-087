@@ -131,10 +131,10 @@ If the Group Leader sends the OpenMAINT ticket back (i.e., takes it out of revie
 OpenMAINT will transition the Jira ticket from “UNDER REVIEW” to "REJECTED", and then to “IN PROGRESS”. 
 It will also leave a comment based on the action the Group Leader selected:
 
-*If the Group Leader selected Send Back (Add report), the comment will say "This maintenance activity has been sent back. 
- Additional paperwork is required. See OpenMAINT for details."
-*If the Group Leader selected Send Back (Rework), the comment will say "This maintenance activity has been sent back. 
- Rework is required. See OpenMAINT for details."
+* If the Group Leader selected Send Back (Add report), the comment will say "This maintenance activity has been sent back. 
+  Additional paperwork is required. See OpenMAINT for details."
+* If the Group Leader selected Send Back (Rework), the comment will say "This maintenance activity has been sent back. 
+  Rework is required. See OpenMAINT for details."
 
 .. note::
    Need to find out how the comments left in OpenMAINT are stored/if you can see a history.
@@ -149,7 +149,7 @@ It will also leave a comment based on the action the Group Leader selected:
 If the Group Leader closes the OpenMAINT ticket, OpenMAINT will automatically change the status of the Jira ticket to “CLOSED”.
 It will also add a comment depending on the final status of the maintenance activity:
 
-* If the OUtcome is “Maintenance Successful”, the comment will say “This maintenance activity has been closed.
+* If the Outcome is “Maintenance Successful”, the comment will say “This maintenance activity has been closed.
   All tasks were completed successfully. See OpenMAINT for additional details.”
 * If the Outcome is “Maintenance Not Completed”, the comment will say “This maintenance activity has been closed. 
   There were problems, and all tasks were NOT completed successfully. See OpenMAINT for additional details.”
