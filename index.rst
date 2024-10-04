@@ -56,8 +56,9 @@ The screenshots within this docushare are for reference.
 Actions taken by OpenMAINT in JIRA
 ==================================
 
-*This interaction is one-way only.
-OpenMAINT feeds info to JIRA, no info flows back.*
+*This interaction is largely one-way. 
+OpenMAINT feeds info to Jira, and Jira is not set up to feed information back. 
+Any information transfer from Jira back to OpenMAINT will be pulled by OpenMAINT.*
 
 |
 
@@ -65,26 +66,27 @@ OpenMAINT feeds info to JIRA, no info flows back.*
     :name: open-jira-ticket
     :width: 380 px
 
-Initial opening of the JIRA ticket.
+Initial opening of the Jira ticket.
 This occurs one month before the schedule maintenance time in OpenMAINT to allow for resource scheduling and activity coordination in Jira.
-The initial info transferred to the JIRA ticket should include:
+The initial info transferred to the Jira ticket should include:
 
 * Assignee (this is the group lead for the assigned group, or the default manager (Eduardo) if that person doesn’t exist in JIRA).
 * Add Manager (Eduardo) as a watcher
-* Priority (still need to match these with JIRA values).
 * Components: Planned Maintenance
 * Target execution date of the maintenance used as the Due Date in Jira.
 * Link to OpenMAINT maintenance activity.
 * Suggested text for description of the ticket:
   This is a maintenance activity from OpenMAINT: (name of maintenance activity)
-  The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in JIRA, and get the activity in the work schedule.
-  The technician/point-of-contact will START PROGRESS on the JIRA ticket, and then move to OpenMAINT to perform the work.
-  Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and close the maintenance activity.
-  They do not need to return to JIRA, all updates will be automatic.
-  See (link to document or confluence page, to be provided) for reminders on how to execute the workflow in OpenMAINT.
+  The group lead should confirm their group will be doing this work, then assign an appropriate technician/point-of-contact in Jira, and get the activity in the work schedule.
+  The technician/point-of-contact will START PROGRESS on the Jira ticket, and then move to OpenMAINT to perform the work.
+  Within OpenMAINT, the technician/point-of-contact will execute the maintenance activity, follow activity instructions provided, record progress, and send the maintenance activity for review.
+  They do not need to return to Jira, all updates will be automatic.
+  See (link to document or confluence page, TBD) for reminders on how to execute the workflow in OpenMAINT.
 
 .. note::
-   We need to choose what priorities to use in Jira, and how to assign them in OpenMAINT.
+   In the future, we want to consider including a Priority on maintenance activities.
+   This is already a feature within Jira.
+   To implement this, we would need to determine how a priority label could be integrated into OpenMAINT maintenance activities.
 
 |
 
@@ -136,10 +138,6 @@ It will also leave a comment based on the action the Group Leader selected:
 * If the Group Leader selected Send Back (Rework), the comment will say "This maintenance activity has been sent back. 
   Rework is required. See OpenMAINT for details."
 
-.. note::
-   Need to find out how the comments left in OpenMAINT are stored/if you can see a history.
-   If you can't see a history, we will want the comment repeated in Jira.
-
 |
 
 .. figure:: /_static/CMMS-changes-Jira-status-closed.png
@@ -189,6 +187,17 @@ In addition to the comments already mentioned that go along with specific action
 * If the assignee has been changed in OpenMAINT, make a comment saying “The OpenMAINT assignee has been changed from [old assignee] to [new assignee].”
 * When the technician executes the maintenance activity, make a comment saying “The preventative maintenance activity has been executed.”
 * If the preventative maintenance activity is suspended, make a comment saying “The preventative maintenance activity has been paused.”
+
+|
+
+.. figure:: /_static/Jira-schedule.png
+    :name: skipped-comment
+    :width: 290 px
+
+In the process of scheduling maintenance work, Group Leaders and Managers will move activities around in Jira (the primary place where resource scheduling occurs). 
+Once per day, OpenMAINT will check whether any open maintenance tickets in Jira have been rescheduled.
+OpenMAINT only needs to consider tickets that are either OPEN or IN PROGRESS.
+If the due date of the Jira ticket doesn't match the due date of the OpenMAINT activity, OpenMAINT will adjust the date of its maintenance activity.
 
 |
 
@@ -251,9 +260,17 @@ They should be allowed to choose one of the following options:
   * No due dates are adjusted with this option.
   * If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
 
-* **Maintain Cadence** maintains the activity frequency and adjust the schedule
+* **Maintain Cadence of Next** maintains the activity frequency and adjust the schedule for the next scheduled maintenance activity
 
-  * Due dates for all future maintenance activities on the schedule are updated to maintain the normal cadence of the maintenance activity.
+  * When selecting this option, and the relevant maintenance activity has previously been manually rescheduled, the Group Leader will be asked to confirm if they want to change the schedule.
+  * Due date for only the next maintenance activity on the schedule is updated to maintain the normal cadence of the maintenance activity (if the Group Leader confirms).
+  * If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
+
+* **Maintain Cadence of All** maintains the activity frequency and adjust the schedule for all upcoming maintenance activities
+
+  * When selecting this option, and any relevant maintenance activities have previously been manually rescheduled, the Group Leader will be asked to confirm if they want to reschedule manually-adjusted activities.
+    If they say no, then only maintenance activities that have not been manually rescheduled will be updated to maintain cadence.
+  * Due dates for all future maintenance activities on the schedule, or only those that have not been manually adjusted, are updated to maintain the normal cadence of the maintenance activity.
   * If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
 
 * **Skip Next** cancels the next maintenance activity and maintains the rest of the schedule
