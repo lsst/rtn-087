@@ -277,7 +277,6 @@ They should be allowed to choose one of the following options:
 
 * **Skip Next** cancels the next maintenance activity and maintains the rest of the schedule
 
-  * (NOTE: This will override any schedule changes in Jira)
   * The next maintenance activity is skipped, and the schedule for the remaining maintenance activities stays the same.
 
 * **Pause** is selected if this activity won't be done for a while. This option reschedules the next maintenance activity based on the selected date.
