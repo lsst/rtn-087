@@ -181,7 +181,7 @@ The comment added to the Jira ticket will depend on what changes were made to th
     :name: CMMS-posts-comment-in-JIRA
     :width: 550 px
 
-OpenMAINT will add comments to the Jira ticket throughout the workflow, when certain actions are taken within OpenMaint.
+OpenMAINT will add comments to the Jira ticket throughout the workflow, when certain actions are taken within OpenMaint. 
 In addition to the comments already mentioned that go along with specific actions taken by OpenMAINT, these include:
 
 * If the assignee has been changed in OpenMAINT, make a comment saying “The OpenMAINT assignee has been changed from [old assignee] to [new assignee].”
@@ -191,13 +191,15 @@ In addition to the comments already mentioned that go along with specific action
 |
 
 .. figure:: /_static/Jira-schedule.png
-    :name: skipped-comment
+    :name: Jira-schedule
     :width: 290 px
 
 In the process of scheduling maintenance work, Group Leaders and Managers will move activities around in Jira (the primary place where resource scheduling occurs). 
-Once per day, OpenMAINT will check whether any open maintenance tickets in Jira have been rescheduled.
-OpenMAINT only needs to consider tickets that are either OPEN or IN PROGRESS.
-If the due date of the Jira ticket doesn't match the due date of the OpenMAINT activity, OpenMAINT will adjust the date of its maintenance activity.
+Once per day, OpenMAINT will check whether any open maintenance tickets in Jira have been rescheduled. 
+OpenMAINT only needs to consider tickets that are either OPEN or IN PROGRESS. 
+If the due date of the Jira ticket doesn't match the due date of the OpenMAINT activity, OpenMAINT will adjust the date of its maintenance activity to match Jira. 
+This is done on a per-activity basis, and will not impact the scheduling of any future maintenance activities in OpenMAINT. 
+**To ensure this is true, we will always want OpenMAINT to have more future activities loaded in the schedule than Jira has.**
 
 |
 
