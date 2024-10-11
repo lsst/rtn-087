@@ -198,19 +198,19 @@ In the process of scheduling maintenance work, Group Leaders and Managers will m
 We want the schedule in OpenMAINT to update to match. 
 To facilitate this, OpenMAINT should maintain 2 dates for each maintenance activity:
 
-* The original planned due date (i.e. the "ideal" maintenance due date, if activities followed the original schedule)
-* The actual scheduled due date (which will match the original planned due date, unless things have been manually rescheduled)
+.. * The original planned due date (i.e. the "ideal" maintenance due date, if activities followed the original schedule)
+.. * The actual scheduled due date (which will match the original planned due date, unless things have been manually rescheduled)
 
-Once per day, OpenMAINT will look at its tickets that are in the "Acceptance" or "Execute" stage, and check whether any of the corresponding tickets in Jira have been rescheduled. 
-When doing this check, OpenMAINT will do the following:
+.. Once per day, OpenMAINT will look at its tickets that are in the "Acceptance" or "Execute" stage, and check whether any of the corresponding tickets in Jira have been rescheduled. 
+.. When doing this check, OpenMAINT will do the following:
 
-* OpenMAINT will check the workflow status of the Jira ticket, and only consider tickets that are OPEN, IN PROGRESS, or CANCELLED. Any other status can be ignored.
-* If the Jira ticket has been CANCELLED, OpenMAINT will cancel its ticket.
-* For OPEN and IN PROGRESS tickets, OpenMAINT will compare its maintenance activity due date (the actual scheduled due date) to the Jira ticket due date. 
-  If it doesn't match, OpenMAINT will adjust the date of its maintenance activity to match Jira. 
+.. * OpenMAINT will check the workflow status of the Jira ticket, and only consider tickets that are OPEN, IN PROGRESS, or CANCELLED. Any other status can be ignored.
+.. * If the Jira ticket has been CANCELLED, OpenMAINT will cancel its ticket.
+.. * For OPEN and IN PROGRESS tickets, OpenMAINT will compare its maintenance activity due date (the actual scheduled due date) to the Jira ticket due date. 
+..   If it doesn't match, OpenMAINT will adjust the date of its maintenance activity to match Jira. 
 
-This is done on a per-activity basis, and should not impact the scheduling of any future maintenance activities in OpenMAINT. 
-When any future activities are generated in OpenMAINT, they should be scheduled based on the "ideal" maintenance schedule (i.e. original scheduled maintenance dates), not on any adjustments made in Jira.
+.. This is done on a per-activity basis, and should not impact the scheduling of any future maintenance activities in OpenMAINT. 
+.. When any future activities are generated in OpenMAINT, they should be scheduled based on the "ideal" maintenance schedule (i.e. original scheduled maintenance dates), not on any adjustments made in Jira.
 
 |
 
