@@ -198,19 +198,19 @@ In the process of scheduling maintenance work, Group Leaders and Managers will m
 We want the schedule in OpenMAINT to update to match. 
 To facilitate this, OpenMAINT should maintain 2 dates for each maintenance activity:
 
-.. * The original planned due date (i.e. the "ideal" maintenance due date, if activities followed the original schedule)
-.. * The actual scheduled due date (which will match the original planned due date, unless things have been manually rescheduled)
+* The original planned due date (i.e. the "ideal" maintenance due date, if activities followed the original schedule)
+* The actual scheduled due date (which will match the original planned due date, unless things have been manually rescheduled)
 
-.. Once per day, OpenMAINT will look at its tickets that are in the "Acceptance" or "Execute" stage, and check whether any of the corresponding tickets in Jira have been rescheduled. 
-.. When doing this check, OpenMAINT will do the following:
+Once per day, OpenMAINT will look at its tickets that are in the "Acceptance" or "Execute" stage, and check whether any of the corresponding tickets in Jira have been rescheduled. 
+When doing this check, OpenMAINT will do the following:
 
-.. * OpenMAINT will check the workflow status of the Jira ticket, and only consider tickets that are OPEN, IN PROGRESS, or CANCELLED. Any other status can be ignored.
-.. * If the Jira ticket has been CANCELLED, OpenMAINT will cancel its ticket.
-.. * For OPEN and IN PROGRESS tickets, OpenMAINT will compare its maintenance activity due date (the actual scheduled due date) to the Jira ticket due date. 
-..   If it doesn't match, OpenMAINT will adjust the date of its maintenance activity to match Jira. 
+* OpenMAINT will check the workflow status of the Jira ticket, and only consider tickets that are OPEN, IN PROGRESS, or CANCELLED. Any other status can be ignored.
+* If the Jira ticket has been CANCELLED, OpenMAINT will cancel its ticket.
+* For OPEN and IN PROGRESS tickets, OpenMAINT will compare its maintenance activity due date (the actual scheduled due date) to the Jira ticket due date. 
+  If it doesn't match, OpenMAINT will adjust the date of its maintenance activity to match Jira. 
 
-.. This is done on a per-activity basis, and should not impact the scheduling of any future maintenance activities in OpenMAINT. 
-.. When any future activities are generated in OpenMAINT, they should be scheduled based on the "ideal" maintenance schedule (i.e. original scheduled maintenance dates), not on any adjustments made in Jira.
+This is done on a per-activity basis, and should not impact the scheduling of any future maintenance activities in OpenMAINT. 
+When any future activities are generated in OpenMAINT, they should be scheduled based on the "ideal" maintenance schedule (i.e. original scheduled maintenance dates), not on any adjustments made in Jira.
 
 |
 
@@ -264,43 +264,43 @@ The Send Back (Rework) option will delete the completion date and the original O
     :name: CMMS-popup-window
     :width: 550 px
 
-When the Group Leader closes the OpenMAINT ticket, a pop-up window should ask them how they want to adjust the schedule for the next maintenance activity.
-The pop-up should include the date of the next scheduled maintenance, and the typical maintenance period of this activity.
-They should be allowed to choose one of the following options:
-
-* **Maintain Date** maintains the current schedule
-
-  * No due dates are adjusted with this option.
-  * Example: If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
-
-* **Maintain Cadence of Next** maintains the activity frequency and adjust the schedule for the next scheduled maintenance activity
-
-  * When selecting this option, and the relevant maintenance activity has previously been manually rescheduled, the Group Leader will be asked to confirm if they want to change the schedule.
-  * Due date for only the next maintenance activity on the schedule is updated to maintain the normal cadence of the maintenance activity (if the Group Leader confirms).
-    This updates both the original due date and the actual scheduled due date, and pushes the updated due date to Jira.
-  * Example: If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
-
-* **Maintain Cadence of All** maintains the activity frequency and adjust the schedule for all upcoming maintenance activities
-
-  * When selecting this option, and any relevant maintenance activities have previously been manually rescheduled, the Group Leader will be asked to confirm if they want to reschedule manually-adjusted activities. 
-    The Group Leader should also have the option to cancel this selection and choose a different option from the original popup.
-  * Whether the Group Leader selects yes or no, the original scheduled due date will be updated for all future maintenance activities (this change happens in OpenMAINT only, and is not pushed to Jira).
-  * If the Group Leader selects no, then only maintenance activities that have not been manually rescheduled will be updated to maintain cadence. 
-    This updates the actual scheduled due date only for those activities, and pushes the new dates to Jira.
-  * If the Group Leader selects yes, all maintenance activities will have their actual scheduled due dates updated, and the data will be pushed to Jira.
-  * Example: If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
-
-* **Skip Next** cancels the next maintenance activity and maintains the rest of the schedule
-
-  * The next maintenance activity is skipped, and the schedule for the remaining maintenance activities stays the same.
-
-* **Pause** is selected if this activity won't be done for a while. This option reschedules the next maintenance activity based on the selected date.
-
-  * The Group Leader will be prompted to select or enter a date when the maintenance activity will resume.
-  * The Group Leader will be required to write a comment saying why the maintenance activity is being paused.
-
-Note that several of these options will require OpenMAINT to leave comments in Jira describing what has been done. 
-These comments are described earlier in this document.
+.. When the Group Leader closes the OpenMAINT ticket, a pop-up window should ask them how they want to adjust the schedule for the next maintenance activity.
+.. The pop-up should include the date of the next scheduled maintenance, and the typical maintenance period of this activity.
+.. They should be allowed to choose one of the following options:
+.. 
+.. * **Maintain Date** maintains the current schedule
+.. 
+..   * No due dates are adjusted with this option.
+..   * Example: If the normal cadence is maintenance once a month and the next scheduled activity is 2 weeks after maintenance was last completed, the due date will still be in 2 weeks.
+.. 
+.. * **Maintain Cadence of Next** maintains the activity frequency and adjust the schedule for the next scheduled maintenance activity
+.. 
+..   * When selecting this option, and the relevant maintenance activity has previously been manually rescheduled, the Group Leader will be asked to confirm if they want to change the schedule.
+..   * Due date for only the next maintenance activity on the schedule is updated to maintain the normal cadence of the maintenance activity (if the Group Leader confirms).
+..     This updates both the original due date and the actual scheduled due date, and pushes the updated due date to Jira.
+..   * Example: If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
+.. 
+.. * **Maintain Cadence of All** maintains the activity frequency and adjust the schedule for all upcoming maintenance activities
+.. 
+..   * When selecting this option, and any relevant maintenance activities have previously been manually rescheduled, the Group Leader will be asked to confirm if they want to reschedule manually-adjusted activities. 
+..     The Group Leader should also have the option to cancel this selection and choose a different option from the original popup.
+..   * Whether the Group Leader selects yes or no, the original scheduled due date will be updated for all future maintenance activities (this change happens in OpenMAINT only, and is not pushed to Jira).
+..   * If the Group Leader selects no, then only maintenance activities that have not been manually rescheduled will be updated to maintain cadence. 
+..     This updates the actual scheduled due date only for those activities, and pushes the new dates to Jira.
+..   * If the Group Leader selects yes, all maintenance activities will have their actual scheduled due dates updated, and the data will be pushed to Jira.
+..   * Example: If the normal cadence is once a month, the next maintenance activity will be rescheduled to be due 1 month after the last maintenance activity was completed.
+.. 
+.. * **Skip Next** cancels the next maintenance activity and maintains the rest of the schedule
+.. 
+..   * The next maintenance activity is skipped, and the schedule for the remaining maintenance activities stays the same.
+.. 
+.. * **Pause** is selected if this activity won't be done for a while. This option reschedules the next maintenance activity based on the selected date.
+.. 
+..   * The Group Leader will be prompted to select or enter a date when the maintenance activity will resume.
+..   * The Group Leader will be required to write a comment saying why the maintenance activity is being paused.
+.. 
+.. Note that several of these options will require OpenMAINT to leave comments in Jira describing what has been done. 
+.. These comments are described earlier in this document.
 
 For Reference: User Intractions
 ===============================
