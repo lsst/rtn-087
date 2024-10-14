@@ -16,7 +16,7 @@
 .. See the `Documenteer documentation <https://documenteer.lsst.io/technotes/index.html>`_ for tips on how to write and configure your new technote.
 
 ##################################
-CMMS-JIRA Workflow and API Details
+OpenMAINT-Jira Workflow and API Details
 ##################################
 
 .. abstract::
@@ -53,7 +53,7 @@ The screenshots within this docushare are for reference.
 
 .. _CMMS-JIRA-Workflow-API-Actions:
 
-Actions taken by OpenMAINT in JIRA
+Actions Taken by OpenMAINT in Jira
 ==================================
 
 *This interaction is largely one-way. 
