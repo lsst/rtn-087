@@ -37,7 +37,7 @@ The purpose of this document is to capture details related to the function of th
    Final workflow diagram will be uploaded as a PDF to docushare, and a link needs to be included in this document for access.
    We can make this a "document" just to allow an easy place to reference, or release as an RTD if we want more stringent version control.
 
-The version of this document corresponds to release 1 of the workflow diagram, `RTD-1081: OpenMAINT Jira Workflow <https://docushare.lsst.org/docushare/dsweb/Get/Version-81745/RTD-1081_OpenMAINTJiraWorkflow_rel1.0_20241023.pdf>`_ .
+The version of this document corresponds to release 1 of the workflow diagram, `RTD-1081: OpenMAINT Jira Workflow <https://docushare.lsst.org/docushare/dsweb/Get/Version-81745/RTD-1081_OpenMAINTJiraWorkflow_rel1.0_20241023.pdf>`_.
 The screenshots within this docushare are for reference.
 
 .. note::
